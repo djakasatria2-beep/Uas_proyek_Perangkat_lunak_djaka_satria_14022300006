@@ -1,0 +1,388 @@
+/* ============================================================
+   ThreadB2B — login-style.css
+   Halaman login: split layout, kiri branding, kanan form
+   ============================================================ */
+
+/* Google Fonts dimuat di login.php */
+
+:root {
+    --color-primary:       #1a56db;
+    --color-primary-hover: #1647c4;
+    --color-primary-light: #eff4ff;
+    --color-danger:        #e02424;
+    --color-danger-light:  #fdf2f2;
+    --color-success:       #057a55;
+    --color-success-light: #f3faf7;
+    --color-border:        #e5e7eb;
+    --color-border-strong: #d1d5db;
+    --color-text:          #111827;
+    --color-text-secondary:#6b7280;
+    --color-text-muted:    #9ca3af;
+    --color-surface:       #ffffff;
+    --color-bg:            #f8f9fb;
+    --font-sans:           'DM Sans', sans-serif;
+    --font-mono:           'DM Mono', monospace;
+    --radius-sm:  4px;
+    --radius-md:  8px;
+    --radius-lg:  12px;
+    --transition: all .18s ease;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html, body {
+    height: 100%;
+    margin: 0;
+    font-family: var(--font-sans);
+    font-size: 14px;
+    -webkit-font-smoothing: antialiased;
+    background: var(--color-bg);
+    color: var(--color-text);
+}
+
+/* ── Layout ─────────────────────────────────────────────── */
+.login-wrap {
+    display: flex;
+    min-height: 100vh;
+}
+
+/* Sisi kiri — branding */
+.login-brand {
+    flex: 1;
+    background: #0f172a;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 48px 56px;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Dekoratif lingkaran di background */
+.login-brand::before,
+.login-brand::after {
+    content: '';
+    position: absolute;
+    border-radius: 50%;
+    pointer-events: none;
+}
+.login-brand::before {
+    width: 480px; height: 480px;
+    background: radial-gradient(circle, rgba(59,130,246,.18) 0%, transparent 70%);
+    top: -120px; right: -120px;
+}
+.login-brand::after {
+    width: 320px; height: 320px;
+    background: radial-gradient(circle, rgba(26,86,219,.14) 0%, transparent 70%);
+    bottom: -80px; left: -60px;
+}
+
+.login-brand__logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+    position: relative;
+    z-index: 1;
+}
+
+.login-brand__logo-mark {
+    width: 40px; height: 40px;
+    background: #3b82f6;
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 20px; font-weight: 800;
+    color: #fff;
+}
+
+.login-brand__logo-text {
+    font-size: 18px;
+    font-weight: 500;
+    color: #f1f5f9;
+}
+.login-brand__logo-text strong { font-weight: 800; }
+
+/* Tengah branding */
+.login-brand__body {
+    position: relative;
+    z-index: 1;
+}
+
+.login-brand__title {
+    font-size: 34px;
+    font-weight: 800;
+    color: #f1f5f9;
+    line-height: 1.25;
+    margin: 0 0 16px;
+    letter-spacing: -.02em;
+}
+
+.login-brand__title span {
+    color: #60a5fa;
+}
+
+.login-brand__desc {
+    font-size: 15px;
+    color: #94a3b8;
+    line-height: 1.7;
+    max-width: 380px;
+    margin: 0 0 36px;
+}
+
+/* Feature list */
+.login-brand__features {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.login-brand__features li {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 13.5px;
+    color: #cbd5e1;
+}
+
+.login-brand__feat-icon {
+    width: 28px; height: 28px;
+    background: rgba(59,130,246,.15);
+    border-radius: 6px;
+    display: flex; align-items: center; justify-content: center;
+    color: #60a5fa;
+    font-size: 13px;
+    flex-shrink: 0;
+}
+
+/* Footer branding */
+.login-brand__footer {
+    font-size: 12px;
+    color: #475569;
+    position: relative;
+    z-index: 1;
+}
+
+/* Sisi kanan — form */
+.login-form-side {
+    width: 480px;
+    flex-shrink: 0;
+    background: var(--color-surface);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 56px 48px;
+    overflow-y: auto;
+}
+
+/* ── Form ────────────────────────────────────────────────── */
+.login-form__heading {
+    margin: 0 0 6px;
+    font-size: 24px;
+    font-weight: 800;
+    color: var(--color-text);
+    letter-spacing: -.02em;
+}
+
+.login-form__sub {
+    font-size: 14px;
+    color: var(--color-text-secondary);
+    margin: 0 0 32px;
+}
+
+/* Alert flash */
+.login-alert {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 12px 14px;
+    border-radius: var(--radius-md);
+    font-size: 13.5px;
+    margin-bottom: 20px;
+    animation: fadeInDown .2s ease;
+}
+.login-alert--error {
+    background: var(--color-danger-light);
+    border: 1px solid #fbd5d5;
+    color: #9b1c1c;
+}
+.login-alert--success {
+    background: var(--color-success-light);
+    border: 1px solid #bcf0da;
+    color: #03543f;
+}
+.login-alert i { flex-shrink: 0; margin-top: 1px; }
+
+@keyframes fadeInDown {
+    from { opacity: 0; transform: translateY(-6px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Form group */
+.lf-group { margin-bottom: 18px; }
+
+.lf-label {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--color-text);
+    margin-bottom: 7px;
+}
+
+.lf-label a {
+    font-weight: 500;
+    font-size: 12.5px;
+    color: var(--color-primary);
+    text-decoration: none;
+}
+.lf-label a:hover { text-decoration: underline; }
+
+/* Input wrapper */
+.lf-input-wrap {
+    position: relative;
+}
+
+.lf-input-wrap .lf-icon {
+    position: absolute;
+    left: 12px; top: 50%; transform: translateY(-50%);
+    color: var(--color-text-muted);
+    font-size: 15px;
+    pointer-events: none;
+    transition: var(--transition);
+}
+
+.lf-input {
+    width: 100%;
+    padding: 10px 12px 10px 38px;
+    font-size: 14px;
+    font-family: var(--font-sans);
+    color: var(--color-text);
+    background: var(--color-surface);
+    border: 1.5px solid var(--color-border-strong);
+    border-radius: var(--radius-md);
+    outline: none;
+    transition: var(--transition);
+}
+
+.lf-input:focus {
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px rgba(26,86,219,.1);
+}
+
+.lf-input:focus + .lf-icon,
+.lf-input-wrap:focus-within .lf-icon {
+    color: var(--color-primary);
+}
+
+.lf-input.is-invalid { border-color: var(--color-danger); }
+
+/* Toggle password visibility */
+.lf-pw-toggle {
+    position: absolute;
+    right: 12px; top: 50%; transform: translateY(-50%);
+    background: none; border: none;
+    color: var(--color-text-muted);
+    cursor: pointer; padding: 0; font-size: 15px;
+    transition: var(--transition);
+}
+.lf-pw-toggle:hover { color: var(--color-text); }
+
+/* Input dengan toggle: tambah padding kanan */
+.lf-input--pw { padding-right: 40px; }
+
+/* Select role */
+.lf-select {
+    width: 100%;
+    padding: 10px 12px 10px 38px;
+    font-size: 14px;
+    font-family: var(--font-sans);
+    color: var(--color-text);
+    background: var(--color-surface);
+    border: 1.5px solid var(--color-border-strong);
+    border-radius: var(--radius-md);
+    outline: none;
+    transition: var(--transition);
+    appearance: none;
+    cursor: pointer;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 16 16'%3E%3Cpath fill='%236b7280' d='M7.247 11.14L2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+}
+.lf-select:focus {
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px rgba(26,86,219,.1);
+}
+
+/* Submit button */
+.lf-btn {
+    width: 100%;
+    padding: 11px;
+    background: var(--color-primary);
+    color: #fff;
+    font-size: 14.5px;
+    font-weight: 700;
+    font-family: var(--font-sans);
+    border: none;
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    transition: var(--transition);
+    margin-top: 8px;
+}
+
+.lf-btn:hover:not(:disabled) { background: var(--color-primary-hover); }
+.lf-btn:active:not(:disabled) { transform: scale(.99); }
+.lf-btn:disabled { opacity: .65; cursor: not-allowed; }
+
+.lf-btn .spinner-border {
+    width: 16px; height: 16px;
+    border-width: 2px;
+}
+
+/* Divider */
+.lf-divider {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 24px 0;
+    color: var(--color-text-muted);
+    font-size: 12px;
+}
+.lf-divider::before, .lf-divider::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--color-border);
+}
+
+/* Register link */
+.lf-register-link {
+    text-align: center;
+    font-size: 13.5px;
+    color: var(--color-text-secondary);
+    margin-top: 20px;
+}
+.lf-register-link a {
+    color: var(--color-primary);
+    font-weight: 700;
+    text-decoration: none;
+}
+.lf-register-link a:hover { text-decoration: underline; }
+
+/* ── Responsive ──────────────────────────────────────────── */
+@media (max-width: 900px) {
+    .login-brand { display: none; }
+    .login-form-side { width: 100%; padding: 40px 28px; }
+}
+
+@media (max-width: 480px) {
+    .login-form-side { padding: 32px 20px; }
+    .login-form__heading { font-size: 20px; }
+}

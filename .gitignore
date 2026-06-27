@@ -1,0 +1,7 @@
+.env
+uploads/buyer-docs/*
+uploads/invoices/*
+uploads/surat-jalan/*
+uploads/nota/*
+uploads/profile-pics/*
+!uploads/**/.gitkeep
