@@ -75,7 +75,7 @@ Aplikasi menggunakan arsitektur **PHP Native (multi-page)**, sehingga setiap hal
 
 Contoh akses:
 - Beranda: http://localhost/threadb2b/
-- Tentang: http://localhost/threadb2b/tentang.php
+- Tentang: http://localhost/threadb2b/about.php
 - Produk: http://localhost/threadb2b/produk.php
 - Kontak: http://localhost/threadb2b/kontak.php
 - Login: http://localhost/threadb2b/login.php
