@@ -69,7 +69,17 @@ Aplikasi telah memiliki beberapa fitur utama, namun masih memerlukan penyempurna
 - **Publik** → `index.php`, `about.php`, `contact.php`, dll.
 
 ---
+## Akses Halaman
 
+Aplikasi menggunakan arsitektur **PHP Native (multi-page)**, sehingga setiap halaman utama diakses melalui file PHP masing-masing.
+
+Contoh akses:
+- Beranda: http://localhost/threadb2b/
+- Tentang: http://localhost/threadb2b/tentang.php
+- Produk: http://localhost/threadb2b/produk.php
+- Kontak: http://localhost/threadb2b/kontak.php
+- Login: http://localhost/threadb2b/login.php
+---
 ## 🔐 Akun Login
 
 ### Admin
