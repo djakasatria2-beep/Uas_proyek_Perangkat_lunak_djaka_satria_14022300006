@@ -87,7 +87,7 @@ Aplikasi telah memiliki beberapa fitur utama, namun masih memerlukan penyempurna
 ## 🛠 Tech Stack
 
 - PHP Native
-- MySQL
+- MySQL Versi 8.2/8.3
 - HTML
 - CSS
 - JavaScript
